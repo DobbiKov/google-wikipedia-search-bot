@@ -1,5 +1,8 @@
 # Telegram Bot For Google and Wikipedia Search
-Developer: Roman Zapotockiy(DobbiKov)
+
+## General information
+Developer: Roman Zapotockiy(DobbiKov)\
+Telegram group: https://t.me/dobbikov_dev
 
 # Usage
 - Install python 3
