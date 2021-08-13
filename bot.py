@@ -2,6 +2,7 @@ import telebot
 from telebot import types
 from modules.search.search import search
 from modules.wikipedia import wikipediaSearch
+from mtranslate import translate
 from config import TOKEN
 bot = telebot.TeleBot(TOKEN)
 
@@ -22,8 +23,12 @@ def send_text(message: types.Message):
     markup3 = types.InlineKeyboardMarkup()
     item1 = types.InlineKeyboardButton("Google", callback_data="dobbikov_google")
     item2 = types.InlineKeyboardButton("Wikipedia", callback_data="dobbikov_wikipedia")
+    item3 = types.InlineKeyboardButton("Перевести на русский", callback_data="dobbi_trans_ru")
+    item4 = types.InlineKeyboardButton("Перевести на английский", callback_data="dobbi_trans_en")
 
     markup3.add(item1, item2)
+    markup3.add(item3)
+    markup3.add(item4)
     bot.send_message(message.chat.id, "Ищем в гугле, или википедии?", reply_markup=markup3)
 
 def getSearchesText(userId):
@@ -100,6 +105,14 @@ def botWikipediaArticle(userId, text):
         markup3.add(button)
     bot.send_message(userId, article, parse_mode='html', reply_markup=markup3)
 
+def botTranslate(userId, lang):
+    text = getSearchesText(userId)
+
+    transTextToBot = "Ваш перевод:\n\n"
+    transText = translate(text, lang, "auto")
+    transTextToBot += transText
+
+    bot.send_message(userId, transTextToBot, parse_mode='html')
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
@@ -116,8 +129,11 @@ def callback_inline(call):
         elif call.data.startswith("d_wiki_s_"):
             botWikipediaArticle(call.message.chat.id, call.data.replace("d_wiki_s_", ""))
             bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.message_id)
+        elif call.data.startswith('dobbi_trans_'):
+            botTranslate(call.message.chat.id, call.data.replace("dobbi_trans_", ""))
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Ищем в гугле, или википедии?", reply_markup=None) 
         else:
-            pass
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Ищем в гугле, или википедии?", reply_markup=None) 
 
             # показать оповещение
         bot.answer_callback_query(callback_query_id=call.id, show_alert=False,
