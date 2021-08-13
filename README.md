@@ -14,4 +14,4 @@ Telegram group: https://t.me/dobbikov_dev
     TOKEN = "YOUR_TOKEN"
     BOT_OWNER = YOUR_TELEGRAM_USER_ID
 ```
-- Terminal: `python main.py`
+- Terminal: `python bot.py`
