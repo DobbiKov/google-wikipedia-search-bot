@@ -4,7 +4,7 @@
 Developer: Roman Zapotockiy(DobbiKov)\
 Telegram group: https://t.me/dobbikov_dev
 
-# Usage
+## Usage
 - Install python 3
 - Terminal: `git clone https://github.com/DobbiKov/google-wikipedia-search-bot.git`
 - Terminal: `cd ./google-wikipedia-search-bot`
