@@ -5,9 +5,9 @@ Developer: Roman Zapotockiy(DobbiKov)\
 Telegram group: https://t.me/dobbikov_dev
 
 ## Features
-    - Search in Google without browser
-    - Search in Wikipedia without browser
-    - Google translator without browser
+- Search in Google without browser
+- Search in Wikipedia without browser
+- Google translator without browser
 
 ## Setup
 1. Install python 3
