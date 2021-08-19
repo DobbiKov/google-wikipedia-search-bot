@@ -1,15 +1,19 @@
 from bs4 import BeautifulSoup
 import requests
 import telebot
-from config import TOKEN
-from config import BOT_OWNER
+from fake_useragent import UserAgent
+from loguru import logger
+
+logger.add('../../logging/debug.txt', format="{time} {level} {message}", level="DEBUG") 
+ua = UserAgent()
 
 def search(text):
-
+    headers = {
+        "User-Agent": ua.random
+    }
+    logger.info(headers)
     link = "https://google.com/search?q={0}".format(text)
-
-    req = requests.get(link)
-
+    req = requests.get(link, headers=headers)
     soup = BeautifulSoup(req.text, "html.parser")
 
     results = []
