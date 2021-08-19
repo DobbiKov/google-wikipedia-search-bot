@@ -4,7 +4,7 @@ import telebot
 from fake_useragent import UserAgent
 from loguru import logger
 
-logger.add('../../logging/debug.txt', format="{time} {level} {message}", level="DEBUG") 
+logger.add('./logging/debug.txt', format="{time} {level} {message}", level="DEBUG") 
 ua = UserAgent()
 
 def search(text):
