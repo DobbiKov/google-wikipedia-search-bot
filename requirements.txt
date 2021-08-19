@@ -1,3 +1,4 @@
 wikipedia
 PyTelegramBotApi
 mtranslate
+fake-useragent
