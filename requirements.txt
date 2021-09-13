@@ -3,3 +3,4 @@ PyTelegramBotApi
 mtranslate
 fake-useragent
 loguru
+aiogram
